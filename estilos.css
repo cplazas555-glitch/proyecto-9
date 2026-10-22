@@ -1,0 +1,147 @@
+/* Reinicio general*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(10, 12, 12);
+    color: rgb(161, 44, 44);
+} 
+.contenedor{
+    width: 90%;
+    max-width: 900px;
+    padding: 50px 30px;
+    text-align: center;
+}
+h1{
+ font-size: 32px;
+ margin-bottom: 40px;   
+}
+.menu ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 35px;
+}
+.menu a{
+    position: relative;
+    display: inline-block;
+    color:rgb(228, 227, 218);
+    text-decoration: none;
+    font-size: 25px;
+    padding: 12px 4px;
+    transition: color 0.3s ease;
+}
+.menu a:hover{
+    color:  rgb(161, 44, 44);
+}
+/* 8. Ventana del tooltip */
+.menu a::before {
+    content: attr(data-tooltip);
+
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 14px);
+    transform: translateX(-50%) translateY(12px);
+
+    width: max-content;
+    max-width: 260px;
+    padding: 14px 18px;
+
+    background-color: #3F3F46;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.5;
+    text-align: center;
+
+    border: 1px solid #52525B;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    z-index: 10;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+}
+
+/* 9. Flecha de la ventana */
+.menu a::after {
+    content: "";
+    position: absolute;
+
+    left: 50%;
+    bottom: calc(100% + 4px);
+    transform: translateX(-50%) translateY(12px);
+
+    border-width: 8px 8px 0;
+    border-style: solid;
+    border-color: #3F3F46 transparent transparent;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    z-index: 10;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+}
+
+/* 10. Mostrar la ventana */
+.menu a:hover::before,
+.menu a:focus-visible::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* 11. Mostrar la flecha */
+.menu a:hover::after,
+.menu a:focus-visible::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* 12. Adaptación a móviles */
+@media (max-width: 500px) {
+    .contenedor {
+        width: 100%;
+        padding: 30px 15px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .menu ul {
+        gap: 18px;
+    }
+
+    .menu a {
+        font-size: 16px;
+    }
+
+    .menu a::before {
+        max-width: 200px;
+        white-space: normal;
+    }
+}
